@@ -7,5 +7,5 @@ MAINTAINER Arika Chen <eaglesora@gmail.com>
 RUN go get github.com/tools/godep \
     && go get github.com/openshift/origin \
     && cd $GOPATH/src/github.com/openshift/origin \
-    && godep restore
+    && (godep restore || true)
 
