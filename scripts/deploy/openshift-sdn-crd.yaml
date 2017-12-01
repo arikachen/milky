@@ -1,0 +1,62 @@
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  # name must match the spec fields below, and be in the form: <plural>.<group>
+  name: clusternetworks.network.openshift.io
+spec:
+  # group name to use for REST API: /apis/<group>/<version>
+  group: network.openshift.io
+  # version name to use for REST API: /apis/<group>/<version>
+  version: v1
+  # either Namespaced or Cluster
+  scope: Cluster
+  names:
+    # plural name to be used in the URL: /apis/<group>/<version>/<plural>
+    plural: clusternetworks
+    # singular name to be used as an alias on the CLI and for display
+    singular: clusternetwork
+    # kind is normally the CamelCased singular type. Your resource manifests use this.
+    kind: ClusterNetwork
+    # shortNames allow shorter string to match your resource on the CLI
+    # shortNames:
+    # - cn
+---
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: hostsubnets.network.openshift.io
+spec:
+  group: network.openshift.io
+  version: v1
+  scope: Cluster
+  names:
+    plural: hostsubnets
+    singular: hostsubnet
+    kind: HostSubnet
+---
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: netnamespaces.network.openshift.io
+spec:
+  group: network.openshift.io
+  version: v1
+  scope: Cluster
+  names:
+    plural: netnamespaces
+    singular: netnamespace
+    kind: NetNamespace
+---
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: egressnetworkpolicies.network.openshift.io
+spec:
+  group: network.openshift.io
+  version: v1
+  scope: Cluster
+  names:
+    plural: egressnetworkpolicies
+    singular: egressnetworkpolicy
+    kind: EgressNetworkPolicy
+

@@ -1,0 +1,50 @@
+---
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: milky
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - pods
+      - nodes
+      - namespaces
+      - services
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - ""
+    resources:
+      - events
+    verbs:
+      - create
+  - apiGroups:
+      - "network.openshift.io"
+    resources:
+      - clusternetworks
+      - hostsubnets
+      - netnamespaces
+      - egressnetworkpolicies
+    verbs:
+      - get
+      - list
+      - watch
+      - update
+      - create
+      - patch
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: milky
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: milky
+subjects:
+- kind: ServiceAccount
+  name: milky
+  namespace: kube-system
