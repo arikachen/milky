@@ -18,6 +18,3 @@ kubectl apply -f https://raw.githubusercontent.com/arikachen/milky/master/script
 
 [network]: https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/#pod-network
 
-## TODO
-
-* HA

@@ -1,5 +1,13 @@
 ---
 apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: openshift-sdn
+  namespace: kube-system
+data:
+
+---
+apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: milky
