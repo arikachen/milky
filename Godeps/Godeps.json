@@ -1507,6 +1507,16 @@
 			"Rev": "35ccd4336052e7d73018b1382413534936f34eee"
 		},
 		{
+			"ImportPath": "k8s.io/client-go/tools/leaderelection",
+			"Comment": "kubernetes-1.8.2",
+			"Rev": "35ccd4336052e7d73018b1382413534936f34eee"
+		},
+		{
+			"ImportPath": "k8s.io/client-go/tools/leaderelection/resourcelock",
+			"Comment": "kubernetes-1.8.2",
+			"Rev": "35ccd4336052e7d73018b1382413534936f34eee"
+		},
+		{
 			"ImportPath": "k8s.io/client-go/tools/metrics",
 			"Comment": "kubernetes-1.8.2",
 			"Rev": "35ccd4336052e7d73018b1382413534936f34eee"
@@ -2217,6 +2227,11 @@
 		},
 		{
 			"ImportPath": "k8s.io/kubernetes/pkg/client/informers/informers_generated/internalversion/storage/internalversion",
+			"Comment": "v1.8.2",
+			"Rev": "bdaeafa71f6c7c04636251031f93464384d54963"
+		},
+		{
+			"ImportPath": "k8s.io/kubernetes/pkg/client/leaderelectionconfig",
 			"Comment": "v1.8.2",
 			"Rev": "bdaeafa71f6c7c04636251031f93464384d54963"
 		},
