@@ -48,4 +48,8 @@ func main() {
 	if err != nil {
 		glog.Fatalf("Failed to start sdn controller: %v", err)
 	}
+
+	glog.Info("Started sdn controller")
+	<-stopCh
+	glog.Info("Shutting down sdn controller")
 }

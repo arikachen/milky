@@ -102,9 +102,5 @@ func (a *SDNAgent) Run(clientConfig *restclient.Config, stopCh <-chan struct{}) 
 	informerFactory.Start(stopCh)
 	informerFactory.WaitForCacheSync(stopCh)
 
-	glog.Info("Started sdn agent")
-	<-stopCh
-	glog.Info("Shutting down sdn agent")
-
 	return nil
 }

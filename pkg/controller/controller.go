@@ -4,8 +4,6 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/golang/glog"
-
 	restclient "k8s.io/client-go/rest"
 	kclientsetinternal "k8s.io/kubernetes/pkg/client/clientset_generated/internalclientset"
 	kinternalinformers "k8s.io/kubernetes/pkg/client/informers/informers_generated/internalversion"
@@ -41,10 +39,6 @@ func (c *SDNController) Run(clientConfig *restclient.Config, stopCh <-chan struc
 	}
 	informerFactory.Start(stopCh)
 	informerFactory.WaitForCacheSync(stopCh)
-
-	glog.Info("Started sdn controller")
-	<-stopCh
-	glog.Info("Shutting down sdn controller")
 
 	return nil
 }

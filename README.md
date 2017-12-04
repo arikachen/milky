@@ -21,4 +21,3 @@ kubectl apply -f https://raw.githubusercontent.com/arikachen/milky/master/script
 ## TODO
 
 * HA
-* metrics
