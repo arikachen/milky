@@ -1242,6 +1242,11 @@
 			"Rev": "9707c008294d447053c0e2737c256ee23f99e5b4"
 		},
 		{
+			"ImportPath": "k8s.io/apiserver/pkg/server/healthz",
+			"Comment": "kubernetes-1.8.3-beta.0",
+			"Rev": "9707c008294d447053c0e2737c256ee23f99e5b4"
+		},
+		{
 			"ImportPath": "k8s.io/apiserver/pkg/util/feature",
 			"Comment": "kubernetes-1.8.3-beta.0",
 			"Rev": "9707c008294d447053c0e2737c256ee23f99e5b4"
