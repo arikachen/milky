@@ -2,10 +2,10 @@ package main
 
 import (
 	"flag"
-	"time"
-	"net/http"
 	"net"
+	"net/http"
 	"strconv"
+	"time"
 
 	"github.com/golang/glog"
 	"github.com/prometheus/client_golang/prometheus"
@@ -21,15 +21,15 @@ import (
 )
 
 var (
-	kuberconfig = flag.String("kubeconfig", "", "Path to a kubeconfig. Only required if out-of-cluster.")
-	master      = flag.String("master", "", "The address of the Kubernetes API server. Overrides any value in kubeconfig. Only required if out-of-cluster.")
-	plugin      = flag.String("plugin", "redhat/openshift-ovs-multitenant", "openshift network plugin.")
-	hostName    = flag.String("hostname-override", "", "If non-empty, will use this string as identification instead of the actual hostname.")
-	address     = flag.String("address", "", "node ip.")
-	port        = flag.Uint("port", 8998, "node port.")
-	mtu         = flag.Uint("mtu", 1450, "default mtu.")
-	proxyMode   = flag.String("proxy-mode", "iptables", "proxy mode.")
-	syncPeriod  = flag.Uint("sync-period", 5, "iptables sync period.")
+	kubeconfig = flag.String("kubeconfig", "", "Path to a kubeconfig. Only required if out-of-cluster.")
+	master     = flag.String("master", "", "The address of the Kubernetes API server. Overrides any value in kubeconfig. Only required if out-of-cluster.")
+	plugin     = flag.String("plugin", "redhat/openshift-ovs-multitenant", "openshift network plugin.")
+	hostName   = flag.String("hostname-override", "", "If non-empty, will use this string as identification instead of the actual hostname.")
+	address    = flag.String("address", "", "node ip.")
+	port       = flag.Uint("port", 8998, "node port.")
+	mtu        = flag.Uint("mtu", 1450, "default mtu.")
+	proxyMode  = flag.String("proxy-mode", "iptables", "proxy mode.")
+	syncPeriod = flag.Uint("sync-period", 5, "iptables sync period.")
 )
 
 func main() {
@@ -38,7 +38,7 @@ func main() {
 	// set up signals so we handle the first shutdown signal gracefully
 	stopCh := signals.SetupSignalHandler()
 
-	cfg, err := clientcmd.BuildConfigFromFlags(*master, *kuberconfig)
+	cfg, err := clientcmd.BuildConfigFromFlags(*master, *kubeconfig)
 	if err != nil {
 		glog.Fatalf("Error building kubeconfig: %v", err)
 	}
@@ -62,7 +62,6 @@ func main() {
 	if err != nil {
 		glog.Fatalf("Failed to start sdn controller: %v", err)
 	}
-
 
 	mux := http.NewServeMux()
 	healthz.InstallHandler(mux)
