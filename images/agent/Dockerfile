@@ -7,7 +7,7 @@ MAINTAINER Arika Chen <eaglesora@gmail.com>
 COPY init.sh /opt
 
 ADD http://mirror.centos.org/centos/7/cloud/x86_64/openstack-pike/openvswitch-2.7.3-1.1fc27.el7.x86_64.rpm /opt
-ADD https://github.com/arikachen/milky/releases/download/v0.1-alpha/milky-0.1.tar.gz /opt
+ADD https://github.com/arikachen/milky/releases/download/v0.1/milky-0.1.tar.gz /opt
 
 RUN yum install -y \
         ethtool \
