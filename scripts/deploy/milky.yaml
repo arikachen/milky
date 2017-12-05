@@ -40,7 +40,7 @@ spec:
       serviceAccountName: milky
       initContainers:
         - name: cni-init
-          image: arikachen/milky-agent
+          image: arikachen/milky-agent:v0.1
           command:
           - /opt/init.sh
           volumeMounts:
@@ -51,7 +51,7 @@ spec:
               readOnly: false
       containers:
         - name: milky-agent
-          image: arikachen/milky-agent
+          image: arikachen/milky-agent:v0.1
           args:
             - --v=5
             - --logtostderr
@@ -112,7 +112,7 @@ spec:
       serviceAccountName: milky
       containers:
         - name: milky-ctrl
-          image: arikachen/milky-ctrl
+          image: arikachen/milky-ctrl:v0.1
           args:
             - --v=5
             - --logtostderr

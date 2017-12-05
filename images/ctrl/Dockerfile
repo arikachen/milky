@@ -4,7 +4,7 @@ FROM centos:7.4.1708
 
 MAINTAINER Arika Chen <eaglesora@gmail.com>
 
-ADD https://github.com/arikachen/milky/releases/download/v0.1-alpha/milky-0.1.tar.gz /opt
+ADD https://github.com/arikachen/milky/releases/download/v0.1/milky-0.1.tar.gz /opt
 
 RUN yum install -y \
         ethtool \
