@@ -5,7 +5,8 @@ metadata:
   name: openshift-sdn
   namespace: kube-system
 data:
-
+  plugin: redhat/openshift-ovs-multitenant
+  logLevel: "3"
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -53,8 +54,20 @@ spec:
         - name: milky-agent
           image: arikachen/milky-agent
           args:
-            - --v=5
+            - --plugin=$(OPENSHIFT_NET_PLUGIN)
+            - --v=$(LOG_LEVEL)
             - --logtostderr
+          env:
+            - name: LOG_LEVEL
+              valueFrom:
+                configMapKeyRef:
+                  name: openshift-sdn
+                  key: logLevel
+            - name: OPENSHIFT_NET_PLUGIN
+              valueFrom:
+                configMapKeyRef:
+                  name: openshift-sdn
+                  key: plugin
           securityContext:
             privileged: true
           volumeMounts:
@@ -114,8 +127,20 @@ spec:
         - name: milky-ctrl
           image: arikachen/milky-ctrl
           args:
-            - --v=5
+            - --plugin=$(OPENSHIFT_NET_PLUGIN)
+            - --v=$(LOG_LEVEL)
             - --logtostderr
+          env:
+            - name: LOG_LEVEL
+              valueFrom:
+                configMapKeyRef:
+                  name: openshift-sdn
+                  key: logLevel
+            - name: OPENSHIFT_NET_PLUGIN
+              valueFrom:
+                configMapKeyRef:
+                  name: openshift-sdn
+                  key: plugin
           securityContext:
             privileged: false
 ---
