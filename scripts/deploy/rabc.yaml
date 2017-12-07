@@ -6,11 +6,14 @@ metadata:
 rules:
   - apiGroups:
       - ""
+      - networking.k8s.io
+      - extensions
     resources:
       - pods
       - nodes
       - namespaces
       - services
+      - networkpolicies
     verbs:
       - get
       - list
