@@ -23,6 +23,8 @@ import (
 	"github.com/golang/glog"
 )
 
+const dockerShimSocket = "unix:///var/run/dockershim.sock"
+
 type ProxyConfig struct {
 	Mode               string
 	IPTablesSyncPeriod time.Duration
@@ -76,18 +78,22 @@ func (a *SDNAgent) Run(clientConfig *restclient.Config, stopCh <-chan struct{}) 
 
 	informerFactory := kinternalinformers.NewSharedInformerFactory(internalkClient, time.Second*30)
 
+	runtimeEndpoint := dockerShimSocket
+
+	enableHostports := !strings.Contains(runtimeEndpoint, "crio")
+
 	node, err := sdnnode.New(&sdnnode.OsdnNodeConfig{
 		PluginName:         a.Options.NetworkConfig.NetworkPluginName,
 		Hostname:           hostname,
 		SelfIP:             a.Options.NodeIP,
-		RuntimeEndpoint:    "",
+		RuntimeEndpoint:    runtimeEndpoint,
 		MTU:                a.Options.NetworkConfig.MTU,
 		NetworkClient:      networkClient,
 		KClient:            internalkClient,
 		KubeInformers:      informerFactory,
 		IPTablesSyncPeriod: a.Proxy.IPTablesSyncPeriod,
 		ProxyMode:          a.getProxyMode(),
-		EnableHostports:    true,
+		EnableHostports:    enableHostports,
 		Recorder:           recorder,
 	})
 	if err != nil {
