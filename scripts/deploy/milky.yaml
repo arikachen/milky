@@ -6,6 +6,7 @@ metadata:
   namespace: kube-system
 data:
   plugin: redhat/openshift-ovs-multitenant
+  serviceSubnet: 10.96.0.0/12
   logLevel: "3"
 ---
 apiVersion: v1
@@ -128,6 +129,7 @@ spec:
           image: arikachen/milky-ctrl
           args:
             - --plugin=$(OPENSHIFT_NET_PLUGIN)
+            - --service-network=$(K8S_SERVICE_SUBNET)
             - --v=$(LOG_LEVEL)
             - --logtostderr
           env:
@@ -141,6 +143,12 @@ spec:
                 configMapKeyRef:
                   name: openshift-sdn
                   key: plugin
+            - name: K8S_SERVICE_SUBNET
+              valueFrom:
+                configMapKeyRef:
+                  name: openshift-sdn
+                  key: serviceSubnet
+
           securityContext:
             privileged: false
 ---

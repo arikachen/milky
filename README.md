@@ -29,6 +29,8 @@ kubectl apply -f https://raw.githubusercontent.com/arikachen/milky/master/script
 
 #Create pods
 kubectl apply -f https://raw.githubusercontent.com/arikachen/milky/master/scripts/deploy/milky.yaml
+
+kubectl annotate netnamespace kube-system pod.network.openshift.io/multitenant.change-network="global"
 ```
 
 [network]: https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/#pod-network
