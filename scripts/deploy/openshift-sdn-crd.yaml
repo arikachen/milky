@@ -54,7 +54,7 @@ metadata:
 spec:
   group: network.openshift.io
   version: v1
-  scope: Cluster
+  scope: Namespaced
   names:
     plural: egressnetworkpolicies
     singular: egressnetworkpolicy
